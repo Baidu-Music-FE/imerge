@@ -182,14 +182,14 @@ FlexLayout.prototype = {
             }).appendTo(wrapper);
         });
         var rootDiv = wrapper.children();
-        _.each(this._testBlocks, _.bind(function(block) {
+        _.each(this._testBlocks, _.bind(function(block, i) {
             var index = block.fit.index,
                 root = rootDiv.eq(index),
                 div = $('<div class="root"></div>');
             div.css({
                 width: block.width,
                 height: block.height,
-                backgroundColor: 'rgb(' + _.random(50, 255) + ', ' + _.random(50, 255) + ', ' + _.random(50, 255) + ')',
+                backgroundColor: 'rgb(' + ((i + 50) * (i + 100) % 255) + ', ' + ((i + 100) * (i + 100) % 255) + ', ' + ((i + 150) * (i + 100) * i % 255) + ')',
                 left: block.fit.x - this._testRoots[index].x,
                 top: block.fit.y - this._testRoots[index].y
             }).appendTo(root);
